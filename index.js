@@ -34,9 +34,14 @@ HTTP_SERVER.use(bodyparser.json());
 
 
 //DEFINING AND LISTENING TO PORT WITH EXPRESS SERVER
-const PORT = 5000;
-HTTP_SERVER.listen(PORT,()=>{
-    console.log("Server started Successfully"+PORT);
+// const PORT = 5000;
+// HTTP_SERVER.listen(PORT,()=>{
+//     console.log("Server started Successfully"+PORT);
+// });
+
+const PORT = process.env.DEV_SERVER_PORT;
+HTTP_SERVER.listen(PORT, process.env.NODE_HOSTNAME, () => {
+  console.log("Server started successfully!");
 });
 
 HTTP_SERVER.use("/api/mentors", require("./controllers/mentor.controller"));
