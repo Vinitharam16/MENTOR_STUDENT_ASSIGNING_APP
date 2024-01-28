@@ -3,6 +3,8 @@ const HTTP_SERVER = express();
 const cors = require('cors');
 const bodyparser = require('body-parser');
 const { connectToDatabase } = require('./database/dbconfig');
+
+
 //ENABLING CORS
 HTTP_SERVER.use(cors());
 
