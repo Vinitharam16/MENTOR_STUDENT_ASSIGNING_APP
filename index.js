@@ -6,6 +6,9 @@ const { connectToDatabase } = require('./database/dbconfig');
 //ENABLING CORS
 HTTP_SERVER.use(cors());
 
+//configuring dotenv package
+require("dotenv").config();
+
 //Initializing connection with database
 connectToDatabase();
 
