@@ -5,8 +5,23 @@ const bodyparser = require('body-parser');
 const { connectToDatabase } = require('./database/dbconfig');
 
 
+var whitelist = [
+    "http://127.0.0.1:5500",
+    undefined,
+    "https://student-mentor-app.onrender.com/",
+  ];
+  var corsOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  };
+
 //ENABLING CORS
-HTTP_SERVER.use(cors());
+HTTP_SERVER.use(cors(corsOptions));
 
 //configuring dotenv package
 require("dotenv").config();
